@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+
+public class Library {
+    private ArrayList<Book> books;
+    private ArrayList<Reader> readers;
+
+    public Library() {
+        books = new ArrayList<>();
+        readers = new ArrayList<>();
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
+        System.out.println("Книга добавлена: " + book);
+    }
+
+    public void removeBook(String isbn) {
+        books.removeIf(book -> book.getIsbn().equals(isbn));
+        System.out.println("Книга с ISBN " + isbn + " удалена");
+    }
+
+    public void registerReader(Reader reader) {
+        readers.add(reader);
+        System.out.println("Зарегистрирован " + reader);
+    }
+
+    public void removeReader(int readerId) {
+        readers.removeIf(reader -> reader.getReaderId() == readerId);
+        System.out.println("Читатель с ID " + readerId + " удалён");
+    }
+
+    public void lendBook(String isbn, int readerId) {
+        Book book = findBook(isbn);
+
+        if (book == null) {
+            System.out.println("Книга не найдена");
+            return;
+        }
+
+        if (book.getCopies() <= 0) {
+            System.out.println("Нет доступных экземпляров");
+            return;
+        }
+
+        book.decreaseCopies();
+        System.out.println("Книга выдана читателю ID " + readerId);
+    }
+
+    public void returnBook(String isbn) {
+        Book book = findBook(isbn);
+
+        if (book != null) {
+            book.increaseCopies();
+            System.out.println("Книга возвращена");
+        }
+    }
+
+    private Book findBook(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn)) {
+                return book;
+            }
+        }
+        return null;
+    }
+}
