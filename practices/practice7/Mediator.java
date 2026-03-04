@@ -2,7 +2,6 @@ import java.util.*;
 
 public class ChatMediatorDemo {
 
-    // ===== Interfaces =====
     interface IMediator {
         void createChannel(String channel);
 
@@ -10,7 +9,7 @@ public class ChatMediatorDemo {
         void leave(String channel, IUser user);
 
         void sendToChannel(String channel, IUser from, String text);
-        void sendToChannel(String channel, String fromUserName, String text); // cross-channel by name
+        void sendToChannel(String channel, String fromUserName, String text); 
 
         void sendPrivate(IUser from, String toUserName, String text);
 
