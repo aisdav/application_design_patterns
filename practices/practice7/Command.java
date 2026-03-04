@@ -14,7 +14,7 @@ public class SmartHomeCommand250 {
         public String name(){ return "NoCommand"; }
     }
 
-    // Receivers
+
     static class Light {
         private final String where; private boolean on;
         Light(String where){ this.where=where; }
@@ -39,7 +39,7 @@ public class SmartHomeCommand250 {
         boolean isOn(){ return on; } int getTemp(){ return temp; }
     }
 
-    // Concrete Commands
+
     static class LightOn implements ICommand {
         private final Light l; private boolean prev;
         LightOn(Light l){ this.l=l; }
@@ -117,7 +117,7 @@ public class SmartHomeCommand250 {
         public String name(){ return "Macro("+cmds.size()+")"; }
     }
 
-    // Invoker
+
     static class RemoteControl {
         private final ICommand[] on, off;
         private final Deque<ICommand> undo = new ArrayDeque<>();
@@ -180,7 +180,7 @@ public class SmartHomeCommand250 {
         }
     }
 
-    // Client
+
     public static void main(String[] args) {
         Light light = new Light("Living");
         TV tv = new TV("Living");
