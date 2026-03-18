@@ -21,7 +21,6 @@ class InternalDeliveryService implements IInternalDeliveryService {
     }
 }
 
-// Внешняя служба A
 class ExternalLogisticsServiceA {
     public void shipItem(int itemId) {
         System.out.println("[ExternalA] Отправка товара " + itemId);
@@ -36,7 +35,6 @@ class ExternalLogisticsServiceA {
     }
 }
 
-// Внешняя служба B
 class ExternalLogisticsServiceB {
     public void sendPackage(String packageInfo) {
         System.out.println("[ExternalB] Отправка посылки: " + packageInfo);
@@ -51,7 +49,6 @@ class ExternalLogisticsServiceB {
     }
 }
 
-// Адаптер для службы A
 class LogisticsAdapterA implements IInternalDeliveryService {
     private ExternalLogisticsServiceA service;
     private int itemId;
@@ -77,7 +74,6 @@ class LogisticsAdapterA implements IInternalDeliveryService {
     }
 }
 
-// Адаптер для службы B
 class LogisticsAdapterB implements IInternalDeliveryService {
     private ExternalLogisticsServiceB service;
     private String packageInfo;
@@ -103,7 +99,6 @@ class LogisticsAdapterB implements IInternalDeliveryService {
     }
 }
 
-// Фабрика
 class DeliveryServiceFactory {
     public static IInternalDeliveryService createService(String type, Object... args) {
         switch (type) {
