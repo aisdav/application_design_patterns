@@ -27,7 +27,6 @@ abstract class OrganizationComponent {
     }
 }
 
-// Лист: сотрудник
 class Employee extends OrganizationComponent {
     private String position;
     private double salary;
